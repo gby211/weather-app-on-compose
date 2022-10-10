@@ -19,7 +19,6 @@ import com.example.weatherapponcompose.presentation.ui.theme.DeepBlue
 @Composable
 fun MainScreen(
     viewModel: WeatherViewModel = hiltViewModel(),
-    setFabOnClick: (() -> Unit) -> Unit
 ){
     Box(
         modifier = Modifier.fillMaxSize()

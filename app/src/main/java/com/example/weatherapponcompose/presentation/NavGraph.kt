@@ -13,14 +13,13 @@ import com.example.weatherapponcompose.presentation.ui.Screen
 fun NavGraph(
     navController: NavHostController,
     viewModel: WeatherViewModel,
-    setFabOnClick: (() -> Unit) -> Unit
 ) {
     NavHost(
         navController = navController,
         startDestination = Screen.Home.route,
     ) {
         composable(route = Screen.Home.route) {
-            MainScreen(viewModel,setFabOnClick)
+            MainScreen(viewModel)
         }
         composable(route = Screen.Settings.route) {
             SettingsScreen()
