@@ -1,5 +1,6 @@
 package com.example.weatherapponcompose.presentation.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
@@ -9,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.weatherapponcompose.presentation.dataStore
+import com.example.weatherapponcompose.presentation.ui.theme.DeepBlue
 import com.jamal.composeprefs3.ui.PrefsScreen
 import com.jamal.composeprefs3.ui.prefs.CheckBoxPref
 import com.jamal.composeprefs3.ui.prefs.EditTextPref
@@ -19,6 +21,7 @@ fun SettingsScreen() {
     Surface(modifier = Modifier.padding(16.dp)) {
         PrefsScreen(
             dataStore = LocalContext.current.dataStore,
+
         ) {
             prefsItem {
                 EditTextPref(

@@ -3,5 +3,7 @@
 
     <style name="Theme.WeatherAppOnCompose" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">#1B3B5A</item>
+        <item name="android:navigationBarColor">#1B3B5A</item>
+        <item name="android:navigationBarDividerColor">#1B3B5A</item>
     </style>
 </resources>

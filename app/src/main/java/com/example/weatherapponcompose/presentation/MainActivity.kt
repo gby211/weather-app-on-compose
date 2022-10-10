@@ -33,6 +33,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.weatherapponcompose.R
 import com.example.weatherapponcompose.presentation.components.HomeTopBar
 import com.example.weatherapponcompose.presentation.components.WeatherCard
 import com.example.weatherapponcompose.presentation.ui.Screen
@@ -72,15 +73,14 @@ class MainActivity : ComponentActivity() {
 
                 val navController = rememberNavController()
                 val backStackEntry by navController.currentBackStackEntryAsState()
-                val (fabOnClick, setFabOnClick) = remember { mutableStateOf<(() -> Unit)?>(null) }
 
                 val currentRoute = backStackEntry?.destination?.route
                 Scaffold(
                     topBar = {
                         HomeTopBar(
                             when (currentRoute) {
-                                Screen.Home.route -> "Погода"
-                                Screen.Settings.route -> "Настройки"
+                                Screen.Home.route -> "Weather"
+                                Screen.Settings.route -> "Settings"
                                 else -> ""
                             }
                         )
@@ -88,8 +88,9 @@ class MainActivity : ComponentActivity() {
                     bottomBar = {
                         NavigationBar {
                             NavigationBarItem(
+                                modifier = Modifier.background(DarkBlue),
                                 icon = { Icon(Screen.Home.icon, contentDescription = null) },
-                                label = { Text(Screen.Home.title) },
+                                label = { Text(Screen.Home.title, color = Color.White) },
                                 selected = Screen.Home.route == currentRoute,
                                 onClick = {
                                     navController.navigate(Screen.Home.route) {
@@ -103,8 +104,9 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                             NavigationBarItem(
+                                modifier = Modifier.background(DarkBlue),
                                 icon = { Icon(Screen.Settings.icon, contentDescription = null) },
-                                label = { Text(Screen.Settings.title) },
+                                label = { Text(Screen.Settings.title, color = Color.White) },
                                 selected = Screen.Settings.route == currentRoute,
                                 onClick = {
                                     navController.navigate(Screen.Settings.route) {
@@ -121,7 +123,7 @@ class MainActivity : ComponentActivity() {
                     },
 
                     content = {
-                        NavGraph(navController = navController, viewModel, setFabOnClick)
+                        NavGraph(navController = navController, viewModel)
                     }
                     )
             }
