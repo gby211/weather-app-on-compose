@@ -1,6 +1,7 @@
 package com.example.weatherapponcompose.di
 
 import android.app.Application
+import com.example.weatherapponcompose.data.local.WeatherDataBase
 import com.example.weatherapponcompose.data.remote.WeatherAPI
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -32,4 +33,11 @@ object AppModule {
     fun provideFusedLocationProviderClient(app: Application): FusedLocationProviderClient {
         return LocationServices.getFusedLocationProviderClient(app)
     }
+
+    @Provides
+    @Singleton
+    fun provideWeatherDataBase(app: Application): WeatherDataBase {
+        return WeatherDataBase.getDatabase(app.applicationContext)
+    }
+
 }

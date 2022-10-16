@@ -1,5 +1,6 @@
 package com.example.weatherapponcompose.data.mappers
 
+import com.example.weatherapponcompose.data.local.Weather
 import com.example.weatherapponcompose.data.remote.WeatherDataDto
 import com.example.weatherapponcompose.data.remote.WeatherDto
 import com.example.weatherapponcompose.domain.util.WeatherType
@@ -48,5 +49,14 @@ fun WeatherDto.toWeatherInfo(): WeatherInfo {
     return WeatherInfo(
         weatherDataPerDay = weatherDataMap,
         currentWeatherData = currentWeatherData
+    )
+}
+
+
+fun Weather.toWeatherDataMap(): WeatherInfo {
+    val weatherDataMap = this
+    return WeatherInfo(
+        weatherDataPerDay = weatherDataMap as Map<Int, List<WeatherData>>,
+        currentWeatherData = null
     )
 }
